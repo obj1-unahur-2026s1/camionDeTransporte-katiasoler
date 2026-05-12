@@ -1,9 +1,32 @@
 import cosas.*
 
-describe "group of test for cosas" {
+describe "Escenarios de cosas" {
 
-  test "first test" {
-    assert.that(true)
+  test "El paquete de ladrillos tiene 6 ladrillos, entonces pesa 12" {
+    paqueteDeLadrillos.ladrillos(6)
+    assert.equals(12, paqueteDeLadrillos.peso())
   }
+  test "la bateria antiaerea esta con misiles, entonces su peso es 300 y su peligrosidad 100"{
+    bateria.estaConMisiles()
+    assert.equals(300, bateria.peso())
+    assert.equals(100, bateria.nivelPeligrosidad())
+  }
+  test "la bateria esta sin misiles estonces su peso es 200 y su nivel de peligrosidad 0"{
+    bateria.estaSinMisiles()
+    assert.equals(200, bateria.peso())
+    assert.equals(0, bateria.nivelPeligrosidad())
+  }
+  test "el contenedor lleva a knightRider y bumblebee (no transformado) entonces su peso es de 1400 y su nivel de peligrosidad 10"{
+    contenedorPortuario.agregar(knightRider)
+    contenedorPortuario.agregar(bumblebee)
+    assert.equals(1400, contenedorPortuario.peso())
+    assert.equals(30, contenedorPortuario.nivelPeligrosidad())
+  } 
+  test "embalaje a knightRider entonces su peso es 500 y su nivel de peligrosidad 5" {
+    embalaje.cosa(knightRider)
+    assert.equals(500, embalaje.peso())
+    assert.equals(5, embalaje.nivelPeligrosidad())    
+  }
+
 
 }

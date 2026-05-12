@@ -1,9 +1,127 @@
 import camion.*
+import cosas.*
 
-describe "group of test for camion" {
+describe "Escenarios del camion" {
 
-  test "first test" {
-    assert.that(true)
+  test "camion cargado con bumblebee como robot, la arena a granel con 150 kilos, la batería antiaérea con los misiles puestos, y el embalaje de seguridad poniéndole como contenido el paquete de ladrillos con 80 ladrillos" {
+    bumblebee.transformar()
+    camion.agregar(bumblebee)
+    arenaAgranel.peso(150)
+    camion.agregar(arenaAgranel)
+    bateria.estaConMisiles()
+    camion.agregar(bateria)
+    paqueteDeLadrillos.ladrillos(80)
+    embalaje.embalarA(paqueteDeLadrillos)
+    camion.agregar(embalaje)
+    assert.equals(2410, camion.pesoTotal())
   }
+  test "cosa mas pesada es bumblebee"{
+    bumblebee.transformar()
+    camion.agregar(bumblebee)
+    arenaAgranel.peso(150)
+    camion.agregar(arenaAgranel)
+    bateria.estaConMisiles()
+    camion.agregar(bateria)
+    paqueteDeLadrillos.ladrillos(80)
+    embalaje.embalarA(paqueteDeLadrillos)
+    camion.agregar(embalaje)
+    assert.equals(bumblebee, camion.cosaMasPesada())
+  }
+  test "ningun objeto es peligroso a un nivel de peligro max de 500"{
+    bumblebee.transformar()
+    camion.agregar(bumblebee)
+    arenaAgranel.peso(150)
+    camion.agregar(arenaAgranel)
+    bateria.estaConMisiles()
+    camion.agregar(bateria)
+    paqueteDeLadrillos.ladrillos(80)
+    embalaje.embalarA(paqueteDeLadrillos)
+    camion.agregar(embalaje)
+    assert.that(camion.ningunObjetoEsPeligroso(500))
+  }
+  test "hay  un objeto es peligroso a un nivel de peligro max de 100"{
+    bumblebee.transformar()
+    camion.agregar(bumblebee)
+    arenaAgranel.peso(150)
+    camion.agregar(arenaAgranel)
+    bateria.estaConMisiles()
+    camion.agregar(bateria)
+    paqueteDeLadrillos.ladrillos(80)
+    embalaje.embalarA(paqueteDeLadrillos)
+    camion.agregar(embalaje)
+    assert.notThat(camion.ningunObjetoEsPeligroso(100))
+  }
+  test "puede circular en ruta si su nivel de peligro es menor a 200"{
+    bumblebee.transformar()
+    camion.agregar(bumblebee)
+    arenaAgranel.peso(150)
+    camion.agregar(arenaAgranel)
+    bateria.estaConMisiles()
+    camion.agregar(bateria)
+    paqueteDeLadrillos.ladrillos(80)
+    embalaje.embalarA(paqueteDeLadrillos)
+    camion.agregar(embalaje)
+    assert.that(camion.puedeCircularEnRuta(200))
+  }
+  test "no puede circular en una ruta de nivel de peligrosidad maximo de 90"{
+    bumblebee.transformar()
+    camion.agregar(bumblebee)
+    arenaAgranel.peso(150)
+    camion.agregar(arenaAgranel)
+    bateria.estaConMisiles()
+    camion.agregar(bateria)
+    paqueteDeLadrillos.ladrillos(80)
+    embalaje.embalarA(paqueteDeLadrillos)
+    camion.agregar(embalaje)
+    assert.notThat(camion.puedeCircularEnRuta(90))
 
+  }
+  test "tiene cosa de peso entre 100 y 150"{
+    bumblebee.transformar()
+    camion.agregar(bumblebee)
+    arenaAgranel.peso(150)
+    camion.agregar(arenaAgranel)
+    bateria.estaConMisiles()
+    camion.agregar(bateria)
+    paqueteDeLadrillos.ladrillos(80)
+    embalaje.embalarA(paqueteDeLadrillos)
+    camion.agregar(embalaje)
+    assert.that(camion.tieneCosaDePesoEntre(100,150))
+  }
+  test "Tiene una cosa de peso 800" {
+    bumblebee.transformar()
+    camion.agregar(bumblebee)
+    arenaAgranel.peso(150)
+    camion.agregar(arenaAgranel)
+    bateria.estaConMisiles()
+    camion.agregar(bateria)
+    paqueteDeLadrillos.ladrillos(80)
+    embalaje.embalarA(paqueteDeLadrillos)
+    camion.agregar(embalaje)
+    assert.that(camion.cosaDePeso(800))    
+  }
+  test "los pesos son pares"{
+    bumblebee.transformar()
+    camion.agregar(bumblebee)
+    arenaAgranel.peso(150)
+    camion.agregar(arenaAgranel)
+    bateria.estaConMisiles()
+    camion.agregar(bateria)
+    paqueteDeLadrillos.ladrillos(80)
+    embalaje.embalarA(paqueteDeLadrillos)
+    camion.agregar(embalaje)
+    assert.that(camion.pesosSonPares())
+  }
+  test "no esta excedido" {
+    bumblebee.transformar()
+    camion.agregar(bumblebee)
+    arenaAgranel.peso(150)
+    camion.agregar(arenaAgranel)
+    bateria.estaConMisiles()
+    camion.agregar(bateria)
+    paqueteDeLadrillos.ladrillos(80)
+    embalaje.embalarA(paqueteDeLadrillos)
+    camion.agregar(embalaje)
+    assert.notThat(camion.estaExcedido())   
+  }
 }
