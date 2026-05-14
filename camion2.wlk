@@ -1,5 +1,5 @@
 import cosas2.*
-object knightRider {
+object knightRider2 {
     method peso(){
         return 500
     }
@@ -11,7 +11,7 @@ object knightRider {
     }
     method consecuenciasDeLaCarga(){}
 }
-object bumblebee {
+object bumblebee2 {
     var estaTransformado = false
     method peso(){
         return 800
@@ -30,7 +30,7 @@ object bumblebee {
         self.transformar()
     }
 }
-object paqueteDeLadrillos {
+object paqueteDeLadrillos2 {
     var ladrillos = 1
     method peso(){
         return ladrillos * 2
@@ -45,7 +45,7 @@ object paqueteDeLadrillos {
         ladrillos += 12
     }
 }
-object arenaAgranel {
+object arenaAgranel2 {
     var property peso = 0
     method nivelPeligrosidad(){
         return 1
@@ -54,7 +54,7 @@ object arenaAgranel {
         peso = (peso - 10).max(0)
     }
 }
-object bateria {
+object bateria2 {
     var estaConMisiles = true
     method estaConMisiles(){
         estaConMisiles = true
@@ -78,7 +78,7 @@ object bateria {
         self.estaConMisiles()
     }
 }
-object contenedorPortuario { 
+object contenedorPortuario2 { 
     const cosas = []
     method agregar(cosa){
         cosas.add(cosa)
@@ -101,7 +101,7 @@ object contenedorPortuario {
         cosas.forEach({c => c.consecuenciasDeLaCarga()})
     }
 }
-object residuosRadiactivos {
+object residuosRadiactivos2 {
     var property peso = 0
     method nivelPeligrosidad(){
         return 200
@@ -110,7 +110,7 @@ object residuosRadiactivos {
         peso += 15
     }
 }
-object embalaje {
+object embalaje2 {
     var cosa = bateria
     method embalarA(unaCosa){
         cosa = unaCosa 
